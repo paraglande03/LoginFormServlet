@@ -22,10 +22,10 @@ import java.io.PrintWriter;
 public class LoginPage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //get request parameters for userId and password
+
         String user = request.getParameter("user");
         String pwd = request.getParameter("pwd");
-        //get servlet config init params
+      
         String userID = getServletConfig().getInitParameter("user");
         String password = getServletConfig().getInitParameter("password");
         if(userID.equals(user) && password.equals(pwd)) {
