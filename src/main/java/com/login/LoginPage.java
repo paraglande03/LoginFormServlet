@@ -26,16 +26,18 @@ public class LoginPage extends HttpServlet {
         String user = request.getParameter("user");
         String pwd = request.getParameter("pwd");
       
-        String userID = getServletConfig().getInitParameter("user");
-        String password = getServletConfig().getInitParameter("password");
-        if(userID.equals(user) && password.equals(pwd)) {
-            request.setAttribute("user", user);
+
+        if(user.matches("^[A-Z]{1}[a-z]{2,}$")){
+            request.setAttribute("user",user);
             request.getRequestDispatcher("LoginSuccess.jsp").forward(request,response);
-        } else {
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
+        }
+        else {
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
             PrintWriter out = response.getWriter();
             out.println("<font color=red><h3>Either user name or password is wrong.</h3></font>");
             rd.include(request,response);
         }
+
     }
+
 }

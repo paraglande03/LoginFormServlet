@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Form</title>
+    <script defer src="./Validation.js"></script>
 </head>
 <body>
 <form action="LoginServlet" method="get">
-  Username: <input type="text" name="user">
+  Username: <input type="text" name="user" id="user">
+    <error class="error"></error>
   <br>
   </br>
-  Password: <input type="password" name="pwd">
+  Password: <input type="password" name="pwd" id="pwd">
   <br></br>
   <input type="submit" value="Login">
 </form>
