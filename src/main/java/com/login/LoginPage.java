@@ -27,14 +27,14 @@ public class LoginPage extends HttpServlet {
         String pwd = request.getParameter("pwd");
       
 
-        if(user.matches("^[A-Z]{1}[a-z]{2,}$")){
+        if(user.matches("^[A-Z]{1}[a-z]{2,}$")&&pwd.matches("(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%!]{1}).{8,}")){
             request.setAttribute("user",user);
             request.getRequestDispatcher("LoginSuccess.jsp").forward(request,response);
         }
         else {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
             PrintWriter out = response.getWriter();
-            out.println("<font color=red><h3>Either user name or password is wrong.</h3></font>");
+            out.println("<font color=red><h3>Please Enter Valid User Name Or Password.</h3></font>");
             rd.include(request,response);
         }
 
